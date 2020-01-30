@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FenetrePrincipale</class>
+ <widget class="QMainWindow" name="FenetrePrincipale">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Zoo</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tabEspece">
+       <attribute name="title">
+        <string>Espèces</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QTableWidget" name="tableEspeces">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="columnCount">
+           <number>2</number>
+          </property>
+          <column/>
+          <column/>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabAnimaux">
+       <attribute name="title">
+        <string>Animaux</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QTableWidget" name="tableAnimaux">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="columnCount">
+           <number>5</number>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderStretchLastSection">
+           <bool>false</bool>
+          </attribute>
+          <column/>
+          <column/>
+          <column/>
+          <column/>
+          <column/>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionCharger"/>
+   <addaction name="separator"/>
+   <addaction name="action_etape_0"/>
+   <addaction name="action_etape_1"/>
+   <addaction name="action_etape_2"/>
+   <addaction name="action_etape_3"/>
+   <addaction name="action_etape_4"/>
+  </widget>
+  <action name="actionCharger">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/fileopen.png</normaloff>:/icons/fileopen.png</iconset>
+   </property>
+   <property name="text">
+    <string>Charger</string>
+   </property>
+  </action>
+  <action name="action_etape_1">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/1.png</normaloff>:/icons/1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Étape 1</string>
+   </property>
+  </action>
+  <action name="action_etape_2">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/2.png</normaloff>:/icons/2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Étape 2</string>
+   </property>
+  </action>
+  <action name="action_etape_3">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/3.png</normaloff>:/icons/3.png</iconset>
+   </property>
+   <property name="text">
+    <string>Étape 3</string>
+   </property>
+  </action>
+  <action name="action_etape_4">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/4.png</normaloff>:/icons/4.png</iconset>
+   </property>
+   <property name="text">
+    <string>Étape 4</string>
+   </property>
+  </action>
+  <action name="action_etape_0">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/0.png</normaloff>:/icons/0.png</iconset>
+   </property>
+   <property name="text">
+    <string>Étape 0</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
