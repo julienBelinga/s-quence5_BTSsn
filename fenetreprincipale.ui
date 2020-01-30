@@ -82,6 +82,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionCharger"/>
+   <addaction name="actionImporter"/>
    <addaction name="separator"/>
    <addaction name="action_etape_0"/>
    <addaction name="action_etape_1"/>
@@ -141,6 +142,15 @@
    </property>
    <property name="text">
     <string>Étape 0</string>
+   </property>
+  </action>
+  <action name="actionImporter">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/Image1.png</normaloff>icons/Image1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Importer</string>
    </property>
   </action>
  </widget>

@@ -1,43 +1,51 @@
 #include "animal.h"
+#include "espece.h"
+#include <QString>
 
-Animal::Animal(const Espece &espece, const QString &nom, QString sexe, int age){
-    m_espece = espece;
-    m_nom = nom;
-    m_sexe = sexe;
-    m_age = age;
+//========================================================================================
+// ETAPE 2
+
+Animal::Animal()
+{
+
 }
 
-Animal::Animal(const Espece &espece, const QString &nom, QString sexe, int age, int captif){
-    m_espece = espece;
-    m_nom = nom;
-    m_sexe = sexe;
-    m_age = age;
-    m_captif = captif;
+Animal::Animal(const Espece &e, const QString &nom, QString sexe, int age)
+{
+  m_nom = nom;
+  m_sexe = sexe;
+  m_especes = e;
+  m_age = age;
 }
 
-QString Animal::getNom() const{
+QString Animal::getNom() const
+{
     return m_nom;
 }
-Espece Animal::getEspece() const{
-    return m_espece;
+
+Espece Animal::getEspece() const
+{
+    return m_especes;
 }
-QString Animal::getSexe() const{
+
+QString Animal::getSexe() const
+{
     return m_sexe;
 }
-int Animal::getAge() const{
+
+int Animal::getAge() const
+{
     return m_age;
 }
 
-bool Animal::estAdulte() const{
-    if (m_espece.getAgeAdulte() < m_age)
-        return (false);
+bool Animal::estAdulte() const
+{
+    if (m_age > m_especes.getAgeAdulte())
+    {
+        return true;
+    }
     else
-        return (true);
-}
-
-bool Animal::estCaptif() const{
-    if (m_captif == 1)
-        return (false);
-    else
-        return (true);
+    {
+        return false;
+    }
 }

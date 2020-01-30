@@ -1,23 +1,25 @@
 #include "espece.h"
-Espece::Espece(){
-    m_nom="inconnu";
-    m_ageAdulte=0;
+
+//========================================================================================
+// ETAPE 1
+
+Espece::Espece(): m_nom(), m_ageAdulte(0)
+{
+
 }
 
-Espece::Espece(QString nom, int ageAdulte){
-    m_nom =nom;
-    m_ageAdulte =ageAdulte;
-}
-
-void Espece::setNom(const QString &nom)
+Espece::Espece(const QString nom, int age)
 {
     m_nom = nom;
+    m_ageAdulte = age;
+}
+QString Espece::getNom() const
+{
+ return m_nom;
 }
 
-int Espece::getAgeAdulte() const{
+int Espece::getAgeAdulte() const
+{
     return m_ageAdulte;
-}
-QString Espece::getNom() const{
-    return m_nom;
 }
 

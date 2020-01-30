@@ -1,5 +1,7 @@
 #include "fenetreprincipale.h"
 #include "ui_fenetreprincipale.h"
+#include "espece.h"
+#include "animal.h"
 
 #include <QTableWidgetItem>
 #include <QMessageBox>
@@ -39,8 +41,8 @@ FenetrePrincipale::~FenetrePrincipale()
  */
 void FenetrePrincipale::initialiser_tables()
 {
-    const QStringList headersAnimaux({tr("Nom"), tr("Espèce"), tr("Sexe"), tr("Age"), tr("Est adulte"), tr("Est captif")});
-    ui->tableAnimaux->setColumnCount(6);
+    const QStringList headersAnimaux({tr("Nom"), tr("Espèce"), tr("Sexe"), tr("Age"), tr("Est adulte")});
+    ui->tableAnimaux->setColumnCount(5);
     ui->tableAnimaux->setHorizontalHeaderLabels(headersAnimaux);
     ui->tableAnimaux->setSelectionMode(QAbstractItemView::NoSelection);
     ui->tableAnimaux->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -152,7 +154,8 @@ void FenetrePrincipale::creer_especes()
 {
 
     Espece e1(QString("Lion"), 4);
-    m_especes.push_back( e1 );
+     m_especes.push_back( e1 );
+
 
 }
 
@@ -184,18 +187,22 @@ void FenetrePrincipale::maj_especes()
 // un animal est d'une espèce, a un nom, un sexe et un age
 void FenetrePrincipale::creer_animaux()
 {
-    Animal a1( m_especes.at(0), QString("Jacques"), QString("Male"), 8);
+
+    Animal a1( m_especes.at(0),"Jacques", "Male", 8);
     m_animaux.push_back( a1 );
 
-    Animal a2( m_especes.at(0), QString("Bernadette"), QString("Femelle"), 3);
+    Animal a2( m_especes.at(0), "Bernadette", "Femelle", 3);
     m_animaux.push_back( a2 );
+
 }
 
 /** --------------------------------------------------------------------------------------
  * \brief Met à jour la vue des animaux.
  */
+
 void FenetrePrincipale::maj_animaux()
 {
+
     ui->tableAnimaux->clearContents();
     ui->tableAnimaux->setRowCount(0);
 
@@ -203,7 +210,7 @@ void FenetrePrincipale::maj_animaux()
     {
         ui->tableAnimaux->insertRow(i);
         ui->tableAnimaux->setItem(i,0, new QTableWidgetItem( m_animaux.at(i).getNom() ) );
-        ui->tableAnimaux->setItem(i,1, new QTableWidgetItem( m_animaux.at(i).getEspece()->getNom() ) );
+        ui->tableAnimaux->setItem(i,1, new QTableWidgetItem( m_animaux.at(i).getEspece().getNom() ) );
         ui->tableAnimaux->setItem(i,2, new QTableWidgetItem( QString( m_animaux.at(i).getSexe() ) ) );
         ui->tableAnimaux->item(i,2)->setTextAlignment( Qt::AlignCenter );
         ui->tableAnimaux->setItem(i,3, new QTableWidgetItem( QString::number( m_animaux.at(i).getAge() ) ) );
@@ -213,16 +220,12 @@ void FenetrePrincipale::maj_animaux()
         else
             ui->tableAnimaux->setItem(i,4, new QTableWidgetItem( "Non" ) );
         ui->tableAnimaux->item(i,4)->setTextAlignment( Qt::AlignCenter );
-        ui->tableAnimaux->item(i,3)->setTextAlignment( Qt::AlignCenter );
-        if ( m_animaux.at(i).estCaptif() )
-            ui->tableAnimaux->setItem(i,5, new QTableWidgetItem( "Oui" ) );
-        else
-            ui->tableAnimaux->setItem(i,5, new QTableWidgetItem( "Non" ) );
     }
+
 }
 
 //========================================================================================
-// ETAPE 3 et 4
+// ETAPE 3
 
 /** --------------------------------------------------------------------------------------
  * \brief Charge le zoo à partir de son texte.
@@ -236,8 +239,6 @@ void FenetrePrincipale::charger_zoo(QTextStream & texte)
     charger_especes(texte);
     charger_animaux(texte);
 
-    m_especes[0].setNom( "Tigre" );
-
     maj_animaux();
     maj_especes();
 }
@@ -248,6 +249,7 @@ void FenetrePrincipale::charger_zoo(QTextStream & texte)
  */
 void FenetrePrincipale::charger_especes(QTextStream& texte)
 {
+
     int nb_especes;
     texte >> nb_especes;
 
@@ -261,6 +263,7 @@ void FenetrePrincipale::charger_especes(QTextStream& texte)
         Espece e(nom, age_adulte);
         m_especes.push_back( e );
     }
+
 }
 
 /** --------------------------------------------------------------------------------------
@@ -269,21 +272,33 @@ void FenetrePrincipale::charger_especes(QTextStream& texte)
  */
 void FenetrePrincipale::charger_animaux(QTextStream& texte)
 {
-    int nb_animaux;
-    texte>>nb_animaux;
 
-    for(int i(0); i!=nb_animaux; ++i){
+    int nb_animal;
+    texte >> nb_animal;
+
+
+    for ( int i = 0; i != nb_animal; ++i )
+    {
+        Espece especes;
         QString nom;
-        Espece espece;
         QString sexe;
         int age;
-        int typeEspece;
-        int captif;
+        int numero_espece;
+        QString esp;
 
-        texte >> nom >> typeEspece >> sexe >> age >> captif;
+       texte >> nom >> numero_espece >> sexe >> age;
 
-        Animal a(m_especes.at(typeEspece), nom, sexe, age, captif);
-        m_animaux.push_back( a );
-    }
+
+       Animal a(m_especes.at(numero_espece), nom, sexe, age);
+       m_animaux.push_back(a);
+
+
+}
 }
 
+
+void FenetrePrincipale::on_actionImporter_triggered()
+{
+     = QFileDialog::getOpenFileName();
+
+}

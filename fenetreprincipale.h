@@ -32,7 +32,9 @@ class FenetrePrincipale : public QMainWindow
         void on_action_etape_4_triggered();
         void on_action_etape_0_triggered();
 
-    private:
+        void on_actionImporter_triggered();
+
+private:
         void initialiser_tables();
         void creer_especes();
         void creer_animaux();

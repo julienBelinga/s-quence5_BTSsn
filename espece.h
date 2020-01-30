@@ -2,6 +2,7 @@
 #define ESPECE_H
 
 #include <QString>
+using namespace std;
 
 //========================================================================================
 // ETAPE 1
@@ -13,18 +14,15 @@
  */
 class Espece
 {
-public:
-    Espece();
-    Espece(QString nom, int ageAdulte);
+    public:
+        Espece();
+        Espece(const QString nom, int ageAdulte);
+        QString getNom() const;
+        int getAgeAdulte() const;
 
-private :
-    QString m_nom;
-    int m_ageAdulte;
-
-public:
-    QString getNom()const;
-    int getAgeAdulte()const;
-    void setNom(const QString &nom);
+private:
+        QString m_nom;
+        int m_ageAdulte;
 };
 
 #endif // ESPECE_H
