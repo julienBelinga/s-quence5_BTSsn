@@ -302,7 +302,7 @@ void FenetrePrincipale::charger_animaux(QTextStream& texte)
 void FenetrePrincipale::on_actionImporter_triggered()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
+    db.setHostName("127.0.0.1");
     db.setUserName("root");
     db.setDatabaseName("zoo");
     if(db.open())
