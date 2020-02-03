@@ -7,6 +7,8 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <iostream>
+#include <QtSql>
+
 
 /** --------------------------------------------------------------------------------------
  * \brief Constructeur de la classe FenetrePrincipale.
@@ -154,7 +156,7 @@ void FenetrePrincipale::creer_especes()
 {
 
     Espece e1(QString("Lion"), 4);
-     m_especes.push_back( e1 );
+    m_especes.push_back( e1 );
 
 
 }
@@ -286,19 +288,33 @@ void FenetrePrincipale::charger_animaux(QTextStream& texte)
         int numero_espece;
         QString esp;
 
-       texte >> nom >> numero_espece >> sexe >> age;
+        texte >> nom >> numero_espece >> sexe >> age;
 
 
-       Animal a(m_especes.at(numero_espece), nom, sexe, age);
-       m_animaux.push_back(a);
+        Animal a(m_especes.at(numero_espece), nom, sexe, age);
+        m_animaux.push_back(a);
 
 
-}
+    }
 }
 
 
 void FenetrePrincipale::on_actionImporter_triggered()
 {
-    cout<<"hello world"<<endl;
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("localhost");
+    db.setUserName("root");
+    db.setDatabaseName("zoo");
+    if(db.open())
+    {
+        std::cout << "Vous êtes maintenant connecté à " << db.hostName().toStdString() << std::endl;
+
+
+        db.close();
+    }
+    else
+    {
+        std::cout << "La connexion a échouée, désolé" << std::endl;
+    }
 
 }

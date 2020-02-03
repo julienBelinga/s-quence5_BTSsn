@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTextStream>
+#include <QSqlDatabase>
 
 #include "espece.h"
 #include "animal.h"
