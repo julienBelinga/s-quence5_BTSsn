@@ -146,8 +146,8 @@
   </action>
   <action name="actionImporter">
    <property name="icon">
-    <iconset>
-     <normaloff>icons/Image1.png</normaloff>icons/Image1.png</iconset>
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/Image1.png</normaloff>:/icons/Image1.png</iconset>
    </property>
    <property name="text">
     <string>Importer</string>

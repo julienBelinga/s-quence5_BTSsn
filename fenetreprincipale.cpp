@@ -299,6 +299,6 @@ void FenetrePrincipale::charger_animaux(QTextStream& texte)
 
 void FenetrePrincipale::on_actionImporter_triggered()
 {
-     = QFileDialog::getOpenFileName();
+    cout<<"hello world"<<endl;
 
 }
